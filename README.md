@@ -124,3 +124,7 @@ LastFatalMessage:[OnSurfaceCreated] crash occured on callback: 0
   `napi_unwrap` 从 exports 的 `__NATIVE_XCOMPONENT_OBJ__` 取实例；
   `OH_NativeXComponent_GetNativeXComponent(ArkUI_NodeHandle)` 是 ArkUI 原生节点那套，别混用。
 - `hilog/log.h` 自带 `#define LOG_TAG NULL`，自定义宏要改名，否则 `-Wmacro-redefined`。
+
+## 许可证
+
+[MIT](./LICENSE) © 2026 JacquelineWu。个人与商业使用、修改、再分发均可，保留版权声明即可。
