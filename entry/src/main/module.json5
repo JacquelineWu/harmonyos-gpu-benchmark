@@ -22,6 +22,8 @@
         "startWindowIcon": "$media:app_icon",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
+        "minWindowWidth": 640,
+        "minWindowHeight": 480,
         "skills": [
           {
             "entities": ["entity.system.home"],

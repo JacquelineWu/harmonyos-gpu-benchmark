@@ -11,17 +11,17 @@ struct StatCell {
   build() {
     Column() {
       Text(this.label)
-        .fontSize(11)
+        .fontSize(10)
         .fontColor('#8A94A6')
         .width('100%')
       Text(this.value)
-        .fontSize(17)
+        .fontSize(15)
         .fontWeight(FontWeight.Medium)
         .fontColor(this.accent)
-        .margin({ top: 3 })
+        .margin({ top: 2 })
         .width('100%')
     }
-    .padding(10)
+    .padding(8)
     .borderRadius(10)
     .backgroundColor('#151A24')
     .layoutWeight(1)
@@ -69,7 +69,7 @@ struct ParamSlider {
         })
     }
     .width('100%')
-    .margin({ top: 8 })
+    .margin({ top: 6 })
   }
 }
 
@@ -244,24 +244,25 @@ struct Index {
     .backgroundColor('#05070B')
   }
 
+  // 侧栏内容。外层由 Scroll 包裹：窗口偏矮时也能滚动看到全部内容，而不是只显示上半截
   @Builder
-  controlPanel() {
+  panelContent() {
     Column() {
       Text('甜甜圈烤机')
-        .fontSize(22)
+        .fontSize(19)
         .fontWeight(FontWeight.Bold)
         .fontColor('#F5F7FA')
         .width('100%')
-      Text('OpenGL ES 3.0 · 毛发甜甜圈 · GPU 压力测试')
+        Text('OpenGL ES 3.0 · 毛发甜甜圈 · GPU 压力测试')
         .fontSize(11)
         .fontColor('#8A94A6')
-        .margin({ top: 4 })
+        .margin({ top: 3 })
         .width('100%')
 
       // 分数
       Column() {
         Text(this.snap.score.toFixed(0))
-          .fontSize(34)
+          .fontSize(28)
           .fontWeight(FontWeight.Bold)
           .fontColor('#FF7A2F')
         Text('综合分数（帧率 × 负载复杂度）')
@@ -270,10 +271,10 @@ struct Index {
           .margin({ top: 2 })
       }
       .width('100%')
-      .padding(14)
+      .padding(12)
       .borderRadius(12)
       .backgroundColor('#151A24')
-      .margin({ top: 14 })
+      .margin({ top: 12 })
 
       // 统计网格
       Row() {
@@ -281,34 +282,34 @@ struct Index {
         StatCell({ label: '最低帧率', value: `${this.snap.minFps.toFixed(1)}`, accent: '#F87171' })
       }
       .width('100%')
-      .margin({ top: 8 })
+      .margin({ top: 6 })
 
       Row() {
         StatCell({ label: '最高帧率', value: `${this.snap.maxFps.toFixed(1)}`, accent: '#4ADE80' })
         StatCell({ label: '已运行时长', value: this.formatDuration(this.snap.elapsedSec), accent: '#E8ECF3' })
       }
       .width('100%')
-      .margin({ top: 8 })
+      .margin({ top: 6 })
 
       Row() {
         StatCell({ label: '渲染分辨率', value: `${this.snap.width}×${this.snap.height}`, accent: '#E8ECF3' })
         StatCell({ label: '每帧三角形', value: this.loadLabel(), accent: '#E8ECF3' })
       }
       .width('100%')
-      .margin({ top: 8 })
+      .margin({ top: 6 })
 
       // 档位
       Text('压力档位')
         .fontSize(13)
         .fontColor('#C7D0DE')
-        .margin({ top: 18 })
+        .margin({ top: 12 })
         .width('100%')
       Row() {
         ForEach(PRESETS, (item: BenchPreset, index: number) => {
           Button(item.label)
             .fontSize(13)
             .layoutWeight(1)
-            .height(34)
+            .height(32)
             .backgroundColor(this.presetIndex === index ? '#FF7A2F' : '#1E2531')
             .fontColor(this.presetIndex === index ? '#FFFFFF' : '#B9C2D0')
             .onClick(() => {
@@ -329,7 +330,7 @@ struct Index {
       Text('负载旋钮')
         .fontSize(13)
         .fontColor('#C7D0DE')
-        .margin({ top: 18 })
+        .margin({ top: 12 })
         .width('100%')
 
       ParamSlider({
@@ -374,16 +375,14 @@ struct Index {
         }
       })
 
-      Blank()
-
       Button(this.burning ? '■ 停止烤机' : '▶ 开始烤机')
         .width('100%')
-        .height(44)
+        .height(42)
         .fontSize(16)
         .fontWeight(FontWeight.Medium)
         .backgroundColor(this.burning ? '#B03A3A' : '#FF7A2F')
         .fontColor('#FFFFFF')
-        .margin({ top: 16 })
+        .margin({ top: 12 })
         .onClick(() => {
           this.toggleBurn();
         })
@@ -394,10 +393,8 @@ struct Index {
         .margin({ top: 10 })
         .width('100%')
     }
-    .width(this.wideLayout ? 320 : '100%')
-    .height(this.wideLayout ? '100%' : undefined)
-    .padding(18)
-    .backgroundColor('#0E1219')
+    .width('100%')
+    .padding(14)
   }
 
   build() {
@@ -405,14 +402,29 @@ struct Index {
       if (this.wideLayout) {
         Row() {
           this.renderStage();
-          this.controlPanel();
+          // 侧栏可滚动：窗口默认高度装不下全部控件时，滚动即可看到底部按钮
+          Scroll() {
+            this.panelContent();
+          }
+          .width(320)
+          .height('100%')
+          .scrollBar(BarState.Auto)
+          .edgeEffect(EdgeEffect.Spring)
+          .backgroundColor('#0E1219')
         }
         .width('100%')
         .layoutWeight(1)
       } else {
         Column() {
           this.renderStage();
-          this.controlPanel();
+          Scroll() {
+            this.panelContent();
+          }
+          .width('100%')
+          .layoutWeight(1)
+          .scrollBar(BarState.Auto)
+          .edgeEffect(EdgeEffect.Spring)
+          .backgroundColor('#0E1219')
         }
         .width('100%')
         .layoutWeight(1)
