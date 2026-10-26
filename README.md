@@ -1,5 +1,15 @@
 # 甜甜圈烤机（3D Benchmark）
 
+> 镜像仓库：
+> GitHub · https://github.com/JacquelineWu/harmonyos-gpu-benchmark ·
+> Gitee · https://gitee.com/flyercat/harmonyos-gpu-benchmark
+>
+> ```bash
+> git clone https://github.com/JacquelineWu/harmonyos-gpu-benchmark.git
+> # 或（国内加速）
+> git clone https://gitee.com/flyercat/harmonyos-gpu-benchmark.git
+> ```
+
 面向 **鸿蒙 PC（2in1）/ 平板 / 手机** 的 GPU 压力与效能测试应用，
 复刻 FurMark 的经典「大毛毛甜甜圈」：一个不断旋转、长满毛发的甜甜圈，
 把 GPU 的**顶点吞吐、片元 ALU、过度绘制（overdraw）**同时压满。
