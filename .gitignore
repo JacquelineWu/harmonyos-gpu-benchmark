@@ -1,0 +1,34 @@
+> **编辑者注**：本文件由 WorkBuddy 生成，用于 HarmonyOS / DevEco Studio 工程。
+
+# ---------- Node / 依赖 ----------
+node_modules/
+oh_modules/
+.hvigor/
+
+# ---------- DevEco / IDE ----------
+.bitfun/
+.idea/
+.clangd/
+.clang-format
+.clang-tidy
+*.iml
+local.properties
+
+# ---------- 构建产物 ----------
+build/
+**/build/
+.cxx/
+**/.cxx/
+**/*.hap
+**/*.hsp
+**/*.har
+**/*.app
+**/*.p12
+**/*.cer
+**/*.csr
+**/*.p7b
+
+# ---------- 系统 ----------
+.DS_Store
+Thumbs.db
+*.swp

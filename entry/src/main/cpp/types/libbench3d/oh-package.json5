@@ -1,0 +1,6 @@
+{
+  "name": "libbench3d.so",
+  "types": "./index.d.ts",
+  "version": "1.0.0",
+  "description": "甜甜圈烤机原生渲染库（EGL + OpenGL ES 3.0）"
+}

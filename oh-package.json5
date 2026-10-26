@@ -1,0 +1,12 @@
+{
+  "modelVersion": "6.0.0",
+  "name": "gpubench",
+  "version": "1.0.0",
+  "description": "甜甜圈烤机 - 鸿蒙 PC / 平板的 GPU 压力与效能测试（OpenGL ES 3.0 毛发甜甜圈）",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {},
+  "devDependencies": {},
+  "dynamicDependencies": {}
+}

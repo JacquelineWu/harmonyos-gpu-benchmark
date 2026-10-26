@@ -1,0 +1,6 @@
+{
+  "string": [
+    { "name": "module_desc", "value": "甜甜圈烤机：OpenGL ES 3.0 毛发甜甜圈 GPU 压力与效能测试" },
+    { "name": "EntryAbility_desc", "value": "甜甜圈烤机入口" }
+  ]
+}

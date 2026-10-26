@@ -1,0 +1,11 @@
+{
+  "name": "entry",
+  "version": "1.0.0",
+  "description": "甜甜圈烤机 entry module",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "libbench3d.so": "file:./src/main/cpp/types/libbench3d"
+  }
+}
